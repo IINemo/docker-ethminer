@@ -1,4 +1,4 @@
-FROM cuda6.5
+FROM nvidia/cuda:8.0-devel-ubuntu16.04
 
 WORKDIR /
 
@@ -7,22 +7,22 @@ RUN apt-get update \
     && apt-get -y install software-properties-common \
     && add-apt-repository -y ppa:ethereum/ethereum -y \
     && apt-get update \
-    && apt-get -y install \
+    && apt-get install -y \
+     wget \
      libcryptopp-dev \
-     libleveldb-dev \ 
+     libleveldb-dev \
      libjsoncpp-dev \
-     libjson-rpc-cpp-dev \
+     libjsonrpccpp-dev \
      libboost-all-dev \
      libgmp-dev \
      libreadline-dev \
      libcurl4-gnutls-dev \
      ocl-icd-libopencl1 \
      mesa-common-dev \
-     libmicrohttpd-dev \
-     wget
+     libmicrohttpd-dev
 
-RUN wget https://github.com/ethereum-mining/ethminer/releases/download/v0.10.0/ethminer-0.10.0-Linux.tar.gz
-RUN tar -xvf ethminer-0.10.0-Linux.tar.gz
+RUN wget https://github.com/ethereum-mining/ethminer/releases/download/v0.12.0/ethminer-0.12.0-Linux.tar.gz
+RUN tar -xvf ethminer-0.12.0-Linux.tar.gz
 
 # Env setup
 ENV GPU_FORCE_64BIT_PTR=0
@@ -32,4 +32,3 @@ ENV GPU_MAX_ALLOC_PERCENT=100
 ENV GPU_SINGLE_ALLOC_PERCENT=100
 
 ENTRYPOINT ["ethminer", "-U"]
-
