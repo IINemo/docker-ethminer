@@ -16,7 +16,7 @@ Simple and easy to run, if you have a Nvidia GPU and want to mine eth.
 $ nvidia-docker run -it anthonytatowicz/eth-cuda-miner ARG1 ARG2 ...
 
 # Example
-$ nvidia-docker run -it anthonytatowicz/eth-cuda-miner \
+$ nvidia-docker run -it inemo/ethminer \
 -S us-west1.nanopool.org:9999 \
 -O <your_wallet_address>.<worker_name>/<your_email>
 ```
@@ -28,7 +28,3 @@ The format goes like this "address.worker/email"
 
 ### Help
 `$ etherminer --help`
-
-### Questions?
-You can leave a comment below or send an email to `ajtatowicz@gmail.com`.  
-If this helped and you'd like to leave a tip --> `0x20ad58fe023265577565c7eb44b55c31e7497c33`
