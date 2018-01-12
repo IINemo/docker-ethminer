@@ -8,7 +8,7 @@ Simple and easy to run, if you have a Nvidia GPU and want to mine eth.
 **Note:** This image builds ethminer, which is an activily maintained Genoil fork <https://github.com/ethereum-mining/ethminer>
 
 ### Requirements
-- Nvidia device with compute compatibility >= 3.0 and >= 2.3 GB VRAM.
+- Nvidia device with compute compatibility >= 2.0 and >= 2.3 GB VRAM.
 - Nvidia drivers for your GPU, you can get them here: [Nvidia drivers](http://www.nvidia.com/Download/index.aspx)
 - Nvidia-docker2 (so docker can access your GPU) install instructions here: [nvidia-docker]( https://github.com/nvidia/nvidia-docker/wiki/Installation-(version-2.0)) .
 
