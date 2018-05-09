@@ -1,4 +1,4 @@
-FROM nvidia/cuda:8.0-devel-ubuntu16.04
+FROM nvidia/cuda:9.0-devel-ubuntu16.04
 
 WORKDIR /
 
@@ -21,8 +21,8 @@ RUN apt-get update \
      mesa-common-dev \
      libmicrohttpd-dev
 
-RUN wget https://github.com/ethereum-mining/ethminer/releases/download/v0.12.0/ethminer-0.12.0-Linux.tar.gz
-RUN tar -xvf ethminer-0.12.0-Linux.tar.gz
+RUN wget https://github.com/ethereum-mining/ethminer/releases/download/v0.13.0/ethminer-0.13.0-Linux.tar.gz
+RUN tar -xvf ethminer-0.13.0-Linux.tar.gz
 
 # Env setup
 ENV GPU_FORCE_64BIT_PTR=0
