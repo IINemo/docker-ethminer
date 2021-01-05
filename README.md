@@ -24,5 +24,5 @@ Simple and easy to run, if you have a Nvidia GPU and want to mine eth.
 $ nvidia-docker run -it inemo/ethminer -P stratum1+tcp://<ethaddress>.<node_name (e.g. node1)>@eu1.ethermine.org:4444
 ```
 
-**Note:** `-U` option is set by default
+**Note:** `-U` option is set by default  
 Dockerhub images are at: https://hub.docker.com/repository/docker/inemo/ethminer/
