@@ -25,4 +25,6 @@ $ nvidia-docker run -it inemo/ethminer -P stratum1+tcp://<ethaddress>.<node_name
 ```
 
 **Note:** `-U` option is set by default  
-Dockerhub images are at: https://hub.docker.com/repository/docker/inemo/ethminer/
+
+### Dockerhub images are at: 
+https://hub.docker.com/repository/docker/inemo/ethminer/
