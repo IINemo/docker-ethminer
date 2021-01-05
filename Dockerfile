@@ -1,13 +1,18 @@
-FROM nvidia/cuda:9.2-devel-ubuntu18.04
+FROM nvidia/cuda:11.0-devel-ubuntu18.04
 
 WORKDIR /
 
-# Install common dependencies
 RUN apt-get update && apt-get install -qy git cmake mesa-common-dev libidn11-dev python3-requests python3-git wget
 
-# Install ethminer
-RUN wget https://github.com/ethereum-mining/ethminer/releases/download/v0.18.0/ethminer-0.18.0-cuda-9-linux-x86_64.tar.gz
-RUN tar -xvf ethminer-0.18.0-cuda-9-linux-x86_64.tar.gz
+RUN apt install -y libdbus-1-dev
+RUN git clone https://github.com/ethereum-mining/ethminer.git && \
+    cd ethminer && \
+    git submodule update --init --recursive && \
+    mkdir build  && \
+    cd build && \
+    cmake .. && \
+    cmake --build . --config Release && \
+    make install
 
 # Env setup
 ENV GPU_FORCE_64BIT_PTR=0
