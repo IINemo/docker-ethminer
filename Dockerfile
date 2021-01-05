@@ -1,28 +1,13 @@
-FROM nvidia/cuda:9.0-devel-ubuntu16.04
+FROM nvidia/cuda:9.2-devel-ubuntu18.04
 
 WORKDIR /
 
-# Package and dependency setup
-RUN apt-get update \
-    && apt-get -y install software-properties-common \
-    && add-apt-repository -y ppa:ethereum/ethereum -y \
-    && apt-get update \
-    && apt-get install -y \
-     wget \
-     libcryptopp-dev \
-     libleveldb-dev \
-     libjsoncpp-dev \
-     libjsonrpccpp-dev \
-     libboost-all-dev \
-     libgmp-dev \
-     libreadline-dev \
-     libcurl4-gnutls-dev \
-     ocl-icd-libopencl1 \
-     mesa-common-dev \
-     libmicrohttpd-dev
+# Install common dependencies
+RUN apt-get update && apt-get install -qy git cmake mesa-common-dev libidn11-dev python3-requests python3-git wget
 
-RUN wget https://github.com/ethereum-mining/ethminer/releases/download/v0.13.0/ethminer-0.13.0-Linux.tar.gz
-RUN tar -xvf ethminer-0.13.0-Linux.tar.gz
+# Install ethminer
+RUN wget https://github.com/ethereum-mining/ethminer/releases/download/v0.18.0/ethminer-0.18.0-cuda-9-linux-x86_64.tar.gz
+RUN tar -xvf ethminer-0.18.0-cuda-9-linux-x86_64.tar.gz
 
 # Env setup
 ENV GPU_FORCE_64BIT_PTR=0

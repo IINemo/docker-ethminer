@@ -5,27 +5,23 @@
 
 Simple and easy to run, if you have a Nvidia GPU and want to mine eth.
 
-**Note:** This image builds ethminer, which is an activily maintained Genoil fork <https://github.com/ethereum-mining/ethminer>
+**Note:** This image builds upon ethminer: <https://github.com/ethereum-mining/ethminer>  
+**Note:** Supports Ampere GPUs, e.g.: GeForce 3080/3090, etc. See branch cuda11.0.
 
-### Requirements
-- Nvidia device with compute compatibility >= 3.0 and >= 2.3 GB VRAM.
-- Nvidia drivers for your GPU, you can get them here: [Nvidia drivers](http://www.nvidia.com/Download/index.aspx)
+
+### Requirements for master
+- Nvidia device with compute compatibility: 3.0-7.2. and >= 4 GB VRAM. Supports Pascal and Turing (10x and 20x series).
+- Nvidia drivers for your GPU, you can get them from here: [Nvidia drivers](http://www.nvidia.com/Download/index.aspx) 
+- Nvidia-docker2 (so docker can access your GPU) install instructions here: [nvidia-docker]( https://github.com/nvidia/nvidia-docker/wiki/Installation-(version-2.0)) .
+
+### Requirements for cuda11.0
+- Nvidia device with compute compatibility >= 8.0. Supports Ampere (30x series).
+- Nvidia drivers for your GPU (version >= 455), you can get them from here: [Nvidia drivers](http://www.nvidia.com/Download/index.aspx)
 - Nvidia-docker2 (so docker can access your GPU) install instructions here: [nvidia-docker]( https://github.com/nvidia/nvidia-docker/wiki/Installation-(version-2.0)) .
 
 ### How to run
 ```
-$ nvidia-docker run -it anthonytatowicz/eth-cuda-miner ARG1 ARG2 ...
-
-# Example
-$ nvidia-docker run -it inemo/ethminer \
--S us-west1.nanopool.org:9999 \
--O <your_wallet_address>.<worker_name>/<your_email>
+$ nvidia-docker run -it inemo/ethminer -P stratum1+tcp://<ethaddress>.<node_name (e.g. node1)>@eu1.ethermine.org:4444
 ```
 
-**Note:** `-U` is set by default
-
-**Note:** Be sure to change the -O argument to your mining address and email.  
-The format goes like this "address.worker/email"
-
-### Help
-`$ etherminer --help`
+**Note:** `-U` option is set by default
